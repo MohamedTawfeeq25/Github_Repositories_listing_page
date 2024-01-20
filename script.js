@@ -26,7 +26,19 @@ var page=(count,rep,repo_name,url)=>{
 			current_page--;
 		}
 		parent.innerHTML='';
-			
+
+		if(j==2 ||j==1){j=1;}
+		else{
+			j=j-6;
+		}
+		for(var i=j;i<=count;i++){
+			parent.appendChild(rep[i]);
+			if(i==6*current_page){
+				
+				break;
+			}
+	}
+		
 		document.getElementById('p'+current_page).style="background-color: #428BCA;color:white;";
 	})
 	document.getElementById('right').addEventListener('click',()=>{
@@ -34,6 +46,9 @@ var page=(count,rep,repo_name,url)=>{
 			current_page++;
 		}
 		parent.innerHTML='';
+		if(j==1){
+			j=7;
+		}
 		for(var i=j;i<=count;i++){
 			parent.appendChild(rep[i]);
 			if(i==6*current_page){
