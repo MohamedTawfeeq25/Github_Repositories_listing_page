@@ -5,8 +5,11 @@ var profile=(fet)=>{
 	fetch("https://api.github.com/users/MohamedTawfeeq25")
 	.then(res=>res.json())
 	.then(res=>{
+		console.log(res);
 		total_repo=res.public_repos;
 		document.getElementById("bio").textContent=res.bio;
+		document.getElementById("fl").textContent=res.followers;
+		document.getElementById("fo").textContent=res.following;
 		document.getElementById("username").textContent=res.name;
 		document.getElementById("git").textContent=res.html_url;
 		document.getElementById("location").textContent=res.location;
@@ -19,6 +22,38 @@ var profile=(fet)=>{
 		fet();
 	},1000);
 }
+document.addEventListener('keydown',(e)=>{
+	if(e.key=='Enter'){
+		var input=document.getElementById('search');
+		if(input.value==''){
+			input.focus();
+		}
+		else{
+			document.getElementById("loadCont").style="display:flex";
+			var repo_name=[];
+	var repo_description=[];
+	var language=[];
+	var url=[];
+	var count=0;
+	var parent=document.getElementById("repo-section");
+	parent.innerHTML='';
+	fetch('https://api.github.com/search/repositories?q=MohamedTawfeeq25/'+input.value)
+	.then(res=>res.json())
+	.then(res=>{count=res.items.length;
+		console.log(res);
+		for(var i=0;i<count;i++){
+			repo_name.push(res.items[i].name);
+			repo_description.push(res.items[i].description);
+			url.push(res.items[i].html_url);
+			language.push(res.items[i].language);
+		}
+		Repo(count,repo_name,repo_description,language,url);
+		document.getElementById("loadCont").style="display:none";
+	})
+	.catch((err)=>{console.log(err)});
+		}
+	}
+})
 var left=()=>{
 	document.getElementById("loadCont").style="display:flex";
 	var stat="left";
