@@ -1,6 +1,52 @@
-var Repo=(count,repo_name,repo_description,language,url)=>{
+var page=(count,rep,repo_name,url)=>{
+	var current_page=1;
+	var j=0;
 	var parent=document.getElementById("repo-section");
+	var total=Math.ceil(count/6);
+	var l=document.getElementById("left");
+	for(var i=total;i>=1;i--){
+		var pag=document.createElement('div');
+		pag.setAttribute('class','inner');
+		pag.setAttribute('id','p'+i);
+		pag.textContent=i;
+		l.insertAdjacentElement("afterend",pag);
+
+	}
+	document.getElementById('p'+current_page).style="background-color: #428BCA;color:white;"
 	
+	for(var i=1;i<=count;i++){
+			parent.appendChild(rep[i]);
+			if(i==6){
+				j=i+1;
+				break;
+			}
+	}
+	document.getElementById('left').addEventListener('click',()=>{
+		if(current_page>1){
+			current_page--;
+		}
+		parent.innerHTML='';
+			
+		document.getElementById('p'+current_page).style="background-color: #428BCA;color:white;";
+	})
+	document.getElementById('right').addEventListener('click',()=>{
+		if(current_page<total){
+			current_page++;
+		}
+		parent.innerHTML='';
+		for(var i=j;i<=count;i++){
+			parent.appendChild(rep[i]);
+			if(i==6*current_page){
+				j=i+1;
+				break;
+			}
+	}
+		document.getElementById('p'+current_page).style="background-color: #428BCA;color:white;"
+	})
+}
+var Repo=(count,repo_name,repo_description,language,url)=>{
+
+	var rep=[];
 		for(var i=0;i<count;i++){
 		//main repo div 
 		var repo=document.createElement("div");
@@ -35,11 +81,12 @@ var Repo=(count,repo_name,repo_description,language,url)=>{
 		if(language[i]!=null){
 			repo.appendChild(lang);
 		}
-		parent.appendChild(repo);
+		rep.push(repo);
 	//appending to parent
 
 		}
 		
+		page(count,rep,repo_name,url);
 		
 
 }
@@ -69,11 +116,7 @@ var fet=()=>{
 			url.push(res[i].html_url);
 			language.push(res[i].language);
 		}
-		console.log(repo_name);
-		console.log(repo_description);
-		console.log(language);
-		console.log(url);
-		console.log(count);
+		
 		Repo(count,repo_name,repo_description,language,url);
 	})
 	.catch((err)=>{console.log(err)});
