@@ -20,11 +20,23 @@ var profile=(fet)=>{
 	},1000);
 }
 var left=()=>{
+	document.getElementById("loadCont").style="display:flex";
 	var stat="left";
 	fet(stat);
 }
 var right=()=>{
+	document.getElementById("loadCont").style="display:flex";
 	var stat="right";
+	fet(stat);
+}
+var old=()=>{
+	document.getElementById("loadCont").style="display:flex";
+	var stat="old";
+	fet(stat);
+}
+var newe=()=>{
+	document.getElementById("loadCont").style="display:flex";
+	var stat="newe";
 	fet(stat);
 }
 var fet=(stat)=>{
@@ -52,10 +64,7 @@ var fet=(stat)=>{
 	
 	document.getElementById('p'+page).style="background-color: #428BCA;color:white;"
 	if(stat=="right"){
-		var repo_name=[];
-	var repo_description=[];
-	var language=[];
-	var url=[];
+	
 		document.getElementById('p'+page).style="background-color: white;color:#428BCA;";
 		if(page<total_page){
 			page++;
@@ -64,10 +73,7 @@ var fet=(stat)=>{
 		parent.innerHTML='';
 	}
 	else if(stat=="left"){
-		var repo_name=[];
-	var repo_description=[];
-	var language=[];
-	var url=[];
+	
 		document.getElementById('p'+page).style="background-color: white;color:#428BCA;";
 		if(page>1){
 			page--;
@@ -75,7 +81,24 @@ var fet=(stat)=>{
 		document.getElementById('p'+page).style="background-color: #428BCA;color:white;";
 		parent.innerHTML='';
 	}
-	fetch('https://api.github.com/users/MohamedTawfeeq25/repos?per_page='+per_page+'&page='+page)
+	else if(stat=="old"){
+		document.getElementById('p'+page).style="background-color: white;color:#428BCA;";
+		page=1;
+		document.getElementById('p'+page).style="background-color: #428BCA;color:white;";
+		parent.innerHTML='';
+		document.getElementById('old').style="color:#428BCA;";
+		document.getElementById('newe').style="color:#989898;";
+
+	}
+	else if(stat=="newe"){
+		document.getElementById('p'+page).style="background-color: white;color:#428BCA;";
+		page=total_page;
+		document.getElementById('p'+page).style="background-color: #428BCA;color:white;";
+		parent.innerHTML='';
+		document.getElementById('newe').style="color:#428BCA;";
+		document.getElementById('old').style="color:#989898;";
+	}
+	fetch('https://api.github.com/users/MohamedTawfeeq25/repos?per_page='+per_page+'&page='+page+'&sort=created&direction=asc')
 	.then(res=>res.json())
 	.then(res=>{count=res.length;
 		console.log(res);
@@ -86,6 +109,7 @@ var fet=(stat)=>{
 			language.push(res[i].language);
 		}
 		Repo(count,repo_name,repo_description,language,url);
+		document.getElementById("loadCont").style="display:none";
 	})
 	.catch((err)=>{console.log(err)});
 	console.log(page);
