@@ -62,6 +62,52 @@ a{color: black;text-decoration: none}
 	flex-wrap:wrap;
 
 }
+#repo-section{
+	background-color: white;
+	overflow-y: auto; 
+	margin:20px;
+	display: flex;
+	flex-wrap:wrap;
+
+}
+.repo{
+	margin-right:30px;
+	width:30%;
+	height:45%;
+	margin-top:10px;margin-bottom: 10px;
+	display: grid;
+	grid-template-rows:33% 34% 33%;
+	border:1px solid black;
+}
+#repo-name{
+	margin:10px;
+	display:flex;
+	align-items:center;
+	color:#428BCA;
+	font-size:22px;
+	font-weight: 	bold;
+}
+#description{
+	display:flex;
+	align-items:center;
+	font-size: 16px;
+	margin:10px;
+}
+#language{
+	display: flex;
+	
+	margin:10px;
+}
+#language div{
+	background-color:#428BCA;
+	padding:15px;
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	color:white;
+	font-size: 15px;
+	font-weight: bold;
+}
 /* page section design*/
 #page-section{
 	display: flex;
