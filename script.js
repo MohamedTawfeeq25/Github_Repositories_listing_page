@@ -1,10 +1,46 @@
-var page=(count,rep,repo_name,url)=>{
-	var current_page=1;
-	var j=0;
+
+var total_repo=0;
+var page=1;
+var profile=(fet)=>{
+	fetch("https://api.github.com/users/MohamedTawfeeq25")
+	.then(res=>res.json())
+	.then(res=>{
+		total_repo=res.public_repos;
+		document.getElementById("bio").textContent=res.bio;
+		document.getElementById("username").textContent=res.name;
+		document.getElementById("git").textContent=res.html_url;
+		document.getElementById("location").textContent=res.location;
+		document.getElementById("img").src=res.avatar_url;
+		document.getElementById("git").href=res.html_url;
+	})
+	
+	.catch((err)=>{console.log(err)});
+	setTimeout(()=>{
+		fet();
+	},1000);
+}
+var left=()=>{
+	var stat="left";
+	fet(stat);
+}
+var right=()=>{
+	var stat="right";
+	fet(stat);
+}
+var fet=(stat)=>{
+	var repo_name=[];
+	var repo_description=[];
+	var language=[];
+	var url=[];
+	var count=0;
 	var parent=document.getElementById("repo-section");
-	var total=Math.ceil(count/6);
+	var per_page=10;
+	var total_page=Math.ceil(total_repo/10);
+	
 	var l=document.getElementById("left");
-	for(var i=total;i>=1;i--){
+	if(stat==null){
+		for(var i=total_page;i>=1;i--){
+		
 		var pag=document.createElement('div');
 		pag.setAttribute('class','inner');
 		pag.setAttribute('id','p'+i);
@@ -12,55 +48,54 @@ var page=(count,rep,repo_name,url)=>{
 		l.insertAdjacentElement("afterend",pag);
 
 	}
-	document.getElementById('p'+current_page).style="background-color: #428BCA;color:white;"
+	}
 	
-	for(var i=1;i<=count;i++){
-			parent.appendChild(rep[i]);
-			if(i==6){
-				j=i+1;
-				break;
-			}
-	}
-	document.getElementById('left').addEventListener('click',()=>{
-		if(current_page>1){
-			current_page--;
+	document.getElementById('p'+page).style="background-color: #428BCA;color:white;"
+	if(stat=="right"){
+		var repo_name=[];
+	var repo_description=[];
+	var language=[];
+	var url=[];
+		document.getElementById('p'+page).style="background-color: white;color:#428BCA;";
+		if(page<total_page){
+			page++;
 		}
+		document.getElementById('p'+page).style="background-color: #428BCA;color:white;";
 		parent.innerHTML='';
+	}
+	else if(stat=="left"){
+		var repo_name=[];
+	var repo_description=[];
+	var language=[];
+	var url=[];
+		document.getElementById('p'+page).style="background-color: white;color:#428BCA;";
+		if(page>1){
+			page--;
+		}
+		document.getElementById('p'+page).style="background-color: #428BCA;color:white;";
+		parent.innerHTML='';
+	}
+	fetch('https://api.github.com/users/MohamedTawfeeq25/repos?per_page='+per_page+'&page='+page)
+	.then(res=>res.json())
+	.then(res=>{count=res.length;
+		console.log(res);
+		for(var i=0;i<res.length;i++){
+			repo_name.push(res[i].name);
+			repo_description.push(res[i].description);
+			url.push(res[i].html_url);
+			language.push(res[i].language);
+		}
+		Repo(count,repo_name,repo_description,language,url);
+	})
+	.catch((err)=>{console.log(err)});
+	console.log(page);
+	
 
-		if(j==2 ||j==1){j=1;}
-		else{
-			j=j-6;
-		}
-		for(var i=j;i<=count;i++){
-			parent.appendChild(rep[i]);
-			if(i==6*current_page){
-				
-				break;
-			}
-	}
-		
-		document.getElementById('p'+current_page).style="background-color: #428BCA;color:white;";
-	})
-	document.getElementById('right').addEventListener('click',()=>{
-		if(current_page<total){
-			current_page++;
-		}
-		parent.innerHTML='';
-		if(j==1){
-			j=7;
-		}
-		for(var i=j;i<=count;i++){
-			parent.appendChild(rep[i]);
-			if(i==6*current_page){
-				j=i+1;
-				break;
-			}
-	}
-		document.getElementById('p'+current_page).style="background-color: #428BCA;color:white;"
-	})
 }
+
 var Repo=(count,repo_name,repo_description,language,url)=>{
 
+var parent=document.getElementById("repo-section");
 	var rep=[];
 		for(var i=0;i<count;i++){
 		//main repo div 
@@ -96,44 +131,14 @@ var Repo=(count,repo_name,repo_description,language,url)=>{
 		if(language[i]!=null){
 			repo.appendChild(lang);
 		}
-		rep.push(repo);
+		parent.appendChild(repo);
 	//appending to parent
 
 		}
 		
-		page(count,rep,repo_name,url);
+		
 		
 
 }
-var fet=()=>{
-	fetch("https://api.github.com/users/MohamedTawfeeq25")
-	.then(res=>res.json())
-	.then(res=>{
-		document.getElementById("bio").textContent=res.bio;
-		document.getElementById("username").textContent=res.name;
-		document.getElementById("git").textContent=res.html_url;
-		document.getElementById("location").textContent=res.location;
-		document.getElementById("img").src=res.avatar_url;
-		document.getElementById("git").href=res.html_url;
-	})
-	.catch((err)=>{console.log(err)});
-	var repo_name=[];
-	var repo_description=[];
-	var language=[];
-	var url=[];var count=0;
-	fetch("https://api.github.com/users/MohamedTawfeeq25/repos")
-	.then(res=>res.json())
-	.then(res=>{
-		count=res.length;
-		for(var i=0;i<res.length;i++){
-			repo_name.push(res[i].name);
-			repo_description.push(res[i].description);
-			url.push(res[i].html_url);
-			language.push(res[i].language);
-		}
-		
-		Repo(count,repo_name,repo_description,language,url);
-	})
-	.catch((err)=>{console.log(err)});
-}
-fet();
+
+profile(fet);
