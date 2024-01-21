@@ -33,7 +33,7 @@ document.addEventListener('keydown',(e)=>{
 			var repo_name=[];
 	var repo_description=[];
 	var language=[];
-	var url=[];
+	
 	var count=0;
 	var parent=document.getElementById("repo-section");
 	parent.innerHTML='';
@@ -52,10 +52,10 @@ document.addEventListener('keydown',(e)=>{
 		for(var i=0;i<count;i++){
 			repo_name.push(res.items[i].name);
 			repo_description.push(res.items[i].description);
-			url.push(res.items[i].html_url);
+			
 			language.push(res.items[i].language);
 		}
-		Repo(count,repo_name,repo_description,language,url);
+		Repo(count,repo_name,repo_description,language);
 		}
 		
 		document.getElementById("loadCont").style="display:none";
@@ -98,7 +98,7 @@ var fet=(stat)=>{
 	var repo_name=[];
 	var repo_description=[];
 	var language=[];
-	var url=[];
+
 	var count=0;
 	var parent=document.getElementById("repo-section");
 	var per_page=10;
@@ -161,10 +161,10 @@ var fet=(stat)=>{
 		for(var i=0;i<res.length;i++){
 			repo_name.push(res[i].name);
 			repo_description.push(res[i].description);
-			url.push(res[i].html_url);
+			
 			language.push(res[i].language);
 		}
-		Repo(count,repo_name,repo_description,language,url);
+		Repo(count,repo_name,repo_description,language);
 		document.getElementById("loadCont").style="display:none";
 	})
 	.catch((err)=>{console.log(err)});
@@ -173,7 +173,7 @@ var fet=(stat)=>{
 
 }
 
-var Repo=(count,repo_name,repo_description,language,url)=>{
+var Repo=(count,repo_name,repo_description,language)=>{
 
 var parent=document.getElementById("repo-section");
 	var rep=[];
