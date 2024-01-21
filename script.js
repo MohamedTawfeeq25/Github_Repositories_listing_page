@@ -74,6 +74,16 @@ var newe=()=>{
 	var stat="newe";
 	fet(stat);
 }
+var pg=(a)=>{
+	document.getElementById('p'+page).style="background-color: white;color:#428BCA;";
+	page=a;
+	document.getElementById('p'+page).style="background-color: #428BCA;color:white;";
+	var parent=document.getElementById("repo-section");
+	parent.innerHTML='';
+		document.getElementById("loadCont").style="display:flex";
+	var stat="pg";
+	fet(stat);
+}
 var fet=(stat)=>{
 	var repo_name=[];
 	var repo_description=[];
@@ -91,6 +101,7 @@ var fet=(stat)=>{
 		var pag=document.createElement('div');
 		pag.setAttribute('class','inner');
 		pag.setAttribute('id','p'+i);
+		pag.setAttribute('onclick','pg('+i+')');
 		pag.textContent=i;
 		l.insertAdjacentElement("afterend",pag);
 

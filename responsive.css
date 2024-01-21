@@ -78,7 +78,7 @@ a{color: black;text-decoration: none}
 #repo-section{
 	background-color: white;
 	overflow-y:auto; 
-	margin:20px;justify-content:center;
+	margin:20px;
 	display: flex;
 	flex-wrap:wrap;
 
