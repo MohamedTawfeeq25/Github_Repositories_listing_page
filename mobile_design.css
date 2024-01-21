@@ -97,6 +97,18 @@ a{color: black;text-decoration: none}
 	flex-wrap:wrap;
 
 }
+#error{
+	margin-right:30px;
+	width:30%;
+	height:100%;
+	margin-top:10px;margin-bottom: 10px;
+	display:flex;
+	color:#989898;font-weight: bold;font-size: 25px;
+	justify-content:center;
+	align-items:center;
+	width:100%;
+	border:none;
+}
 .repo{
 	margin-right:30px;
 	width:40%;

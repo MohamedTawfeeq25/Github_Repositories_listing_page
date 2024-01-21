@@ -41,6 +41,14 @@ document.addEventListener('keydown',(e)=>{
 	.then(res=>res.json())
 	.then(res=>{count=res.items.length;
 		console.log(res);
+		if(count==0){
+			var a=document.getElementById("repo-section");
+			var f=document.createElement("div");
+			f.setAttribute("id","error");
+			f.textContent="OOPS!! Not Found Check the name of the repo.";
+			a.appendChild(f);
+		}
+		else{
 		for(var i=0;i<count;i++){
 			repo_name.push(res.items[i].name);
 			repo_description.push(res.items[i].description);
@@ -48,6 +56,8 @@ document.addEventListener('keydown',(e)=>{
 			language.push(res.items[i].language);
 		}
 		Repo(count,repo_name,repo_description,language,url);
+		}
+		
 		document.getElementById("loadCont").style="display:none";
 	})
 	.catch((err)=>{console.log(err)});
