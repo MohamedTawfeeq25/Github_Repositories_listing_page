@@ -2,8 +2,11 @@
 <html>
 <head>
 	<title>Github Repositories Listing Page</title>
-	<link rel="stylesheet" type="text/css" href="./style.css">
-	<link rel="stylesheet" type="text/css" href="./responsive.css">
+	<style>
+	@import "mobile_design.css" screen and (max-width: 680px);
+	@import "responsive.css" screen and (min-width:681px);
+	</style>
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script src="./script.js"></script>
@@ -34,7 +37,7 @@
 
 					</div>
 					<div id="follow">
-							<div >
+							<div id="flo" >
 								<p id="followers">Followers:<span id="fl" style="font-weight:bold">10</span></p>
 								<p id="following">Following:<span id="fo" style="font-weight:bold">12</span></p>
 							</div>

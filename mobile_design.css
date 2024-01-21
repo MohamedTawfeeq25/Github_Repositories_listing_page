@@ -1,3 +1,4 @@
+
 body{
 	
 	width: 100%;
@@ -11,7 +12,7 @@ body{
 	background-color: #FFFFFF;
 	width:100%;
 	display: grid;
-	grid-template-rows:auto auto 13%;
+	grid-template-rows:50% 40% 10%;
 	height: 100%;
 }
 a{color: black;text-decoration: none}
@@ -19,7 +20,7 @@ a{color: black;text-decoration: none}
 #profile-section{
 	
 	 display: grid;
-	 grid-template-columns:30% 70%;
+	 grid-template-rows:40% 60%;
 }
 
 #profile
@@ -37,39 +38,52 @@ a{color: black;text-decoration: none}
 
 #image{
 	
-	width:37%;background-color: #EEEEEE;
+	width:15%;background-color: #EEEEEE;
 	border-radius:100px;
-	height:90%;
+	height:100%;
 }
 #image img{
 	width:100%;height:100%;border-radius: 100px;
 }
 #profile-info{
 	display: grid;
-	grid-template-rows:70% 30%;
+	grid-template-rows:max-content max-content;
 }
+
 #username{
 	color: black;
-	font-size: 25px;
+	font-weight: bold;
+	margin-top:0px;
+	font-size: 23px;text-align: center;
+}
+#bio{
+	margin:-10px 0px 0px 35px;
+	width:90%;font-size: 15px;
+	text-align: justify;
+}
+#location{
+	margin-top:-2px;
+	text-align: center;font-weight: bold;
+	font-size: 20px;padding: 5px;
 }
 #follow{
 	
 	width: 100%;
 	display: grid;
-	grid-template-columns:50% 50%;
+	grid-template-columns:auto auto;
 }
-#follow div{
+#flo{
 	display: flex;
+	justify-content:center;
 	
-	align-items:center;
 }
 #follow div p{
 	margin:10px;
-	font-size: 17px;
+	font-size: 17px;font-weight: bold;
 }
 #follow div input{
 	padding:15px;
-	width:40%;
+	width:60%;
 	border:1px solid black;
 	border-radius: 10px;
 }
@@ -85,8 +99,8 @@ a{color: black;text-decoration: none}
 }
 .repo{
 	margin-right:30px;
-	width:30%;
-	height:45%;
+	width:40%;
+	height:65%;
 	margin-top:10px;margin-bottom: 10px;
 	display: grid;
 	grid-template-rows:33% 34% 33%;
@@ -98,7 +112,7 @@ a{color: black;text-decoration: none}
 	align-items:center;
 	color:#428BCA;
 	font-size:22px;
-	font-weight: 	bold;
+	font-weight: bold;
 }
 #description{
 	display:flex;
@@ -160,26 +174,26 @@ a{color: black;text-decoration: none}
 width:100%;
 }
 #le button{
-	padding:10px;height: 45%;
+	padding:15px;height: 47%;
 	margin-right:10px;
 	border-radius: 30px;display: flex;justify-content:center;align-items:center;
 	border:1px solid #989898;
 	color:#989898;cursor: pointer;
 	font-size: 16px;font-weight: bold;
-	width:25%;background-color: transparent;
+	width:30%;background-color: transparent;
 }
 #le button:hover,#re button:hover{
 	color: #428BCA
 }
 
 #re button{
-padding:10px;height: 45%;
+padding:10px;height: 47%;
 	margin-left:10px;
 	border-radius: 30px;display: flex;justify-content:center;align-items:center;
 	border:1px solid #989898;
 	color:#989898;cursor: pointer;
 	font-size: 16px;font-weight: bold;
-	width:25%;background-color: transparent;
+	width:30%;background-color: transparent;
 }
 #loadCont{
 	width: 100%;
@@ -213,125 +227,49 @@ padding:10px;height: 45%;
 		border-bottom-color:#335383;
 	}
 }
-@media (max-width: 1171px){
+@media (max-width: 547px){
 	#image{
 	
-	width:50%;background-color: #EEEEEE;
+	width:20%;background-color: #EEEEEE;
 	border-radius:100px;
-	height:90%;
-	}
-}
-@media (max-width: 992px){
-	#image{
-	
-	width:40%;background-color: #EEEEEE;
-	border-radius:100px;
-	height:90%;
-	}
-	
-	#profile-section{
-	
-	 display: grid;
-	 grid-template-columns:40% 60%;
-}
-#follow div input{
-	padding:15px;
-	width:60%;
-	border:1px solid black;
-	border-radius: 10px;
-}
-#repo-section{
-	background-color: white;
-	margin:20px;
-	display: flex;
-	justify-content:center;
-	flex-wrap:wrap;
-
+	height:100%;
 }
 .repo{
 	margin-right:30px;
-	width:40%;
-	padding:10px;
-	height:70%;
+	width:65%;
+	height:65%;
 	margin-top:10px;margin-bottom: 10px;
 	display: grid;
 	grid-template-rows:33% 34% 33%;
 	border:1px solid black;
 }
+#le button{
+height: 57%;
+	
+	width:45%;
 }
-@media (max-width: 768px){
+#re button{
+height: 57%;
+	
+	width:45%;
+}
+}
+@media (max-width: 406px){
 	#image{
 	
-	width:57%;background-color: #EEEEEE;
+	width:25%;background-color: #EEEEEE;
 	border-radius:100px;
-	height:90%;
-	}
+	height:100%;
+}
+#le button{
+	height: 60%;
 
+	width:65%;
 }
-/*@media (max-width: 680px){
-	#container{
-	background-color: #FFFFFF;
-	width:100%;
-	display: grid;
-	grid-template-rows:47% 40% 13%;
-	height: 100%;
-}
-#profile-section{
+#re button{
+height: 60%;
 	
-	 display: grid;
-	 grid-template-rows:90% 10%;
+	width:65%;
 }
 
-#profile
-{
-
-	display: grid;
-	grid-template-rows:80% 20%;
 }
-#profile div{
-	display: flex;
-	justify-content:center;
-	align-items:center;
-
-}
-
-#image{
-	
-	width:37%;background-color: #EEEEEE;
-	border-radius:100px;
-	height:90%;
-}
-#image img{
-	width:100%;height:100%;border-radius: 100px;
-}
-#profile-info{
-	display: grid;
-	grid-template-rows:70% 30%;
-}
-#username{
-	color: black;
-	font-size: 25px;
-}
-#follow{
-	
-	width: 100%;
-	display: grid;
-	grid-template-columns:50% 50%;
-}
-#follow div{
-	display: flex;
-	
-	align-items:center;
-}
-#follow div p{
-	margin:10px;
-	font-size: 17px;
-}
-#follow div input{
-	padding:15px;
-	width:40%;
-	border:1px solid black;
-	border-radius: 10px;
-}
-}
-*/
