@@ -33,7 +33,9 @@ a{color: black;text-decoration: none}
 	display: flex;
 	justify-content:center;
 	align-items:center;
+	word-wrap:break-word;
 }
+
 #image{
 	
 	width:37%;background-color: #EEEEEE;
@@ -73,18 +75,11 @@ a{color: black;text-decoration: none}
 	border-radius: 10px;
 }
 /*repo section design*/
-#repo-section{
-	background-color: white;
-	
-	margin:20px;
-	display: flex;
-	flex-wrap:wrap;
 
-}
 #repo-section{
 	background-color: white;
 	overflow-y:auto; 
-	margin:20px;
+	margin:20px;justify-content:center;
 	display: flex;
 	flex-wrap:wrap;
 
@@ -129,6 +124,10 @@ a{color: black;text-decoration: none}
 }
 /* page section design*/
 #page-section{
+	display: grid;
+	grid-template-columns:auto max-content auto;
+}
+#page-section div{
 	display: flex;
 	justify-content:center;
 }
@@ -142,41 +141,46 @@ a{color: black;text-decoration: none}
 }
 .inner{
 	background-color: white;
-	color:#428BCA;border:none;
-	padding:10px;font-size: 17px;font-weight: bold;
+	color:#428BCA;
+	border:none;
+	padding:10px;
+	font-size: 17px;
+	font-weight: bold;
 	cursor: pointer;
 	border-right:1px solid black;
-	display: flex;justify-content:center;align-items:container;
+	display: flex;
+	justify-content:center;
+	align-items:center;
 
 }
 .inner:hover{
 	background-color: #428BCA;
 	color:white;
 	}
-#le{
-width:10%;
+#le,#re{
+width:100%;
 }
 #le button{
-	padding:10px;
+	padding:10px;height: 45%;
 	margin-right:10px;
-	border-radius: 30px;
+	border-radius: 30px;display: flex;justify-content:center;align-items:center;
 	border:1px solid #989898;
 	color:#989898;cursor: pointer;
 	font-size: 16px;font-weight: bold;
-	width:90%;background-color: transparent;
+	width:25%;background-color: transparent;
 }
 #le button:hover,#re button:hover{
 	color: #428BCA
 }
-#re{width:10%;}
+
 #re button{
-padding:10px;
+padding:10px;height: 45%;
 	margin-left:10px;
-	border-radius: 30px;
+	border-radius: 30px;display: flex;justify-content:center;align-items:center;
 	border:1px solid #989898;
 	color:#989898;cursor: pointer;
 	font-size: 16px;font-weight: bold;
-	width:90%;background-color: transparent;
+	width:25%;background-color: transparent;
 }
 #loadCont{
 	width: 100%;

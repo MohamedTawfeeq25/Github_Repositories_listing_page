@@ -3,6 +3,7 @@
 <head>
 	<title>Github Repositories Listing Page</title>
 	<link rel="stylesheet" type="text/css" href="./style.css">
+	<link rel="stylesheet" type="text/css" href="./responsive.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script src="./script.js"></script>
@@ -16,13 +17,12 @@
 	</div>
 		<div id="profile-section">
 				<div id="profile">
-					<div>
+					<div >
 						<div id="image">
 							<img src="" id="img"/>
 						</div>
 					</div>
-					<div>
-
+					<div id="id">
 						<a href="" id="git"></a>
 					</div>
 				</div>
@@ -34,7 +34,7 @@
 
 					</div>
 					<div id="follow">
-							<div>
+							<div >
 								<p id="followers">Followers:<span id="fl" style="font-weight:bold">10</span></p>
 								<p id="following">Following:<span id="fo" style="font-weight:bold">12</span></p>
 							</div>
@@ -49,9 +49,12 @@
 
 		</div>
 		<div id="page-section">
+			<div>
 			<div id="le">
 				<button id="old" onclick="old()">Older</button>
 			</div>
+			</div>
+			<div>
 			<div id="page">
 				<button class="inner" onclick="left()"  id="left" style="border-top-left-radius: 10px;border-bottom-left-radius: 10px;">
 					&larr;
@@ -60,9 +63,12 @@
 				&rarr;
 				</button>
 			</div>
+		</div>
+		<div>
 			<div id="re">
 				<button id="newe" onclick="newe()">Newer</button>
 			</div>
+		</div>
 		</div>
 </div>
 </body>
